@@ -1,5 +1,4 @@
 import streamlit as st
-import time
 
 # Set page configuration
 st.set_page_config(
@@ -633,10 +632,6 @@ def display_ai_experience():
         </div>
         """, unsafe_allow_html=True)
         
-        # Simulate typing with a spinner
-        with st.spinner("Thinking..."):
-            time.sleep(1)  # Simulate processing time
-        
         # Display response based on question
         response = ""
         
@@ -726,4 +721,12 @@ def display_contact():
     st.markdown("<h3 class='header-style'>Send Me a Message</h3>", unsafe_allow_html=True)
     
     with st.form("contact_form", clear_on_submit=True):
-        name = st
+        name = st.text_input("Name")
+        email = st.text_input("Email")
+        subject = st.text_input("Subject")
+        message = st.text_area("Message", height=150)
+        
+        submitted = st.form_submit_button("Send Message")
+        
+        if submitted:
+            st.success("Thank you for your message!
